@@ -1,160 +1,68 @@
-\# 🧬 AI Medical Literature Research Assistant
+# AI Medical Literature Research Assistant
 
+A professional research assistant for discovering, analyzing, comparing, and questioning scientific literature in the medical domain.
 
+## Features
 
-An AI-powered research assistant designed to make exploring medical research papers faster and easier.
+- PubMed literature discovery with real NCBI E-utilities integration
+- PDF upload and extraction for research papers
+- Automatic section detection for common paper structures
+- Evidence-grounded semantic retrieval and chat-style questioning
+- Saved paper library and note-taking
+- Comparison of research studies
+- Clear abstention when evidence is insufficient
 
+## Tech stack
 
+- Python
+- Streamlit
+- PubMed E-utilities
+- PyMuPDF
+- Sentence Transformers
+- Hugging Face Transformers
 
-The application allows users to search medical literature through PubMed, upload research papers, analyze their structure, retrieve relevant evidence using semantic search, and ask questions about the uploaded paper.
+## Installation
 
+1. Create a virtual environment:
+   python -m venv venv
+2. Activate it:
+   - Windows: venv\\Scripts\\activate
+   - macOS/Linux: source venv/bin/activate
+3. Install dependencies:
+   pip install -r requirements.txt
+4. Launch the app:
+   streamlit run app.py
 
+## Usage
 
-\## ✨ Features
+1. Search for papers in PubMed.
+2. Upload a PDF document.
+3. Review detected sections and summaries.
+4. Index the uploaded paper for semantic search.
+5. Ask evidence-based scientific questions.
+6. Save papers to the local research library and add notes.
 
+## Architecture
 
+The app is organized into a small modular research stack:
 
-\- 🔎 Search medical literature using PubMed
+- `app.py` – UI and orchestration
+- `src/paper_search.py` – PubMed access and result parsing
+- `src/pdf_processor.py` – PDF content extraction and validation
+- `src/paper_analyzer.py` – section detection and summary helpers
+- `src/rag_engine.py` – embedding-based retrieval for research evidence
+- `src/answer_generator.py` – evidence-grounded answer generation with abstention
+- `src/research_library.py` – local saved-paper storage
 
-\- 📄 Upload research papers in PDF format
+## Testing
 
-\- 📑 Automatically detect major paper sections
+Run the test suite with:
 
-\- 📝 Generate a structured paper overview
+pytest
 
-\- 🧠 Create semantic embeddings of paper content
+## Privacy and limitations
 
-\- 🔍 Retrieve relevant evidence using semantic search
-
-\- 💬 Ask natural-language questions about a research paper
-
-\- 📚 Display retrieved evidence with similarity scores
-
-\- 🔒 Designed to work locally without requiring an OpenAI API key
-
-\- 🌐 Simple interactive interface built with Streamlit
-
-
-
-\## 🏗️ How It Works
-
-
-
-```text
-
-&#x20;                ┌─────────────────────┐
-
-&#x20;                │      PubMed Search  │
-
-&#x20;                └──────────┬──────────┘
-
-&#x20;                           │
-
-&#x20;                           ▼
-
-&#x20;                ┌─────────────────────┐
-
-&#x20;                │   Research Paper    │
-
-&#x20;                │       PDF Upload    │
-
-&#x20;                └──────────┬──────────┘
-
-&#x20;                           │
-
-&#x20;                           ▼
-
-&#x20;                ┌─────────────────────┐
-
-&#x20;                │  Text Extraction \&  │
-
-&#x20;                │  Section Detection  │
-
-&#x20;                └──────────┬──────────┘
-
-&#x20;                           │
-
-&#x20;                           ▼
-
-&#x20;                ┌─────────────────────┐
-
-&#x20;                │  Semantic Chunking  │
-
-&#x20;                │   \& Embeddings      │
-
-&#x20;                └──────────┬──────────┘
-
-&#x20;                           │
-
-&#x20;                           ▼
-
-&#x20;                ┌─────────────────────┐
-
-&#x20;                │ Semantic Retrieval  │
-
-&#x20;                └──────────┬──────────┘
-
-&#x20;                           │
-
-&#x20;                   User Question
-
-&#x20;                           │
-
-&#x20;                           ▼
-
-&#x20;                ┌─────────────────────┐
-
-&#x20;                │ Evidence-Grounded   │
-
-&#x20;                │      Answer         │
-
-&#x20;                └─────────────────────┘
-
-🛠️ Technologies Used
-
-Python
-
-Streamlit
-
-PubMed
-
-PyPDF
-
-Sentence Transformers
-
-all-MiniLM-L6-v2
-
-NumPy
-
-Semantic Search
-
-Retrieval-Augmented Generation (RAG) concepts
-
-AI\_Medical\_Literature\_Assistant/
-
-│
-
-├── app.py
-
-├── requirements.txt
-
-├── README.md
-
-├── .gitignore
-
-│
-
-└── src/
-
-&#x20;   ├── paper\_search.py
-
-&#x20;   ├── pdf\_processor.py
-
-&#x20;   ├── paper\_analyzer.py
-
-&#x20;   ├── rag\_engine.py
-
-&#x20;   └── answer\_generator.py
-
-
-
+- This project does not require a paid API or user account.
+- Uploaded PDFs are processed locally in the app environment.
+- The AI answers are evidence-grounded only; unsupported claims are not invented.
+- This tool is intended for academic exploration and should not replace clinical advice.
